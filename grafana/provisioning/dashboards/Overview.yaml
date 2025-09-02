@@ -1,0 +1,10 @@
+apiVersion: 1
+
+providers:
+  - name: Overview
+    folder: Dashboards
+    type: file
+    options:
+      path:
+        /etc/grafana/provisioning/dashboards/Overview.json
+
