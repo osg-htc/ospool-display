@@ -1,0 +1,9 @@
+apiVersion: 1
+
+providers:
+  - name: Health
+    type: file
+    options:
+      path:
+        /var/lib/grafana/dashboards/Health.json
+
