@@ -1,0 +1,1897 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 3,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.0-257000",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "RecordTime",
+              "id": "2",
+              "settings": {
+                "interval": "5m"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND FinalAttempt:true AND TransferSuccess:true",
+          "refId": "A",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "OSDF Successes (5 min)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "log": 10,
+              "type": "log"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 16,
+        "x": 8,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelMaxLength": 40,
+        "xTickLabelRotation": 33,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.2.0-257000",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "Endpoint",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "metrics": [
+            {
+              "field": "AttemptFileBytes",
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\"",
+          "refId": "A",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "Bytes transferred per OSDF endpoint (cache/origin)",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.0-257000",
+      "targets": [
+        {
+          "alias": "Director",
+          "bucketAggs": [
+            {
+              "field": "RecordTime",
+              "id": "2",
+              "settings": {
+                "interval": "5m"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "ScheddName:$ScheddName AND TransferProtocol:\"osdf\" AND AND TransferType:$TransferType (FinalAttempt:false OR (FinalAttempt:true AND TransferSuccess:false)) AND NOT _exists_:Endpoint",
+          "refId": "Director",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "Cache/Origin",
+          "bucketAggs": [
+            {
+              "id": "3",
+              "settings": {
+                "interval": "5m",
+                "min_doc_count": "0",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferProtocol:\"osdf\" AND (FinalAttempt:false OR (FinalAttempt:true AND TransferSuccess:false)) AND _exists_:Endpoint",
+          "refId": "Cache",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "OSDF Failures (5 min)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 16,
+        "x": 8,
+        "y": 9
+      },
+      "id": 3,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelMaxLength": 40,
+        "xTickLabelRotation": 33,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.2.0-257000",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "Endpoint",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:false OR (FinalAttempt:true AND TransferSuccess:false))",
+          "refId": "A",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "Transfer attempt failures per OSDF endpoint (cache/origin)",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Percent failure",
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 17,
+        "x": 0,
+        "y": 18
+      },
+      "id": 6,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "vertical",
+        "showValue": "auto",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        },
+        "xField": "Endpoint",
+        "xTickLabelMaxLength": 40,
+        "xTickLabelRotation": 33,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.2.0-257000",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "Endpoint",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\"",
+          "refId": "All",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "Endpoint",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:true AND TransferSuccess:true)  ",
+          "refId": "Success",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "Endpoint",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:false OR (FinalAttempt:true AND TransferSuccess:false))",
+          "refId": "Failure",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "Percent failed attempts per OSDF endpoint (cache/origin)",
+      "transformations": [
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "id": "concatenate",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Count 1": false,
+              "Endpoint 1": false,
+              "Endpoint 2": true,
+              "Endpoint 3": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Count 1": 1,
+              "Count 2": 2,
+              "Count 3": 3,
+              "Endpoint 1": 0,
+              "Endpoint 2": 4,
+              "Endpoint 3": 5
+            },
+            "renameByName": {
+              "Count 1": "Total",
+              "Count 2": "Success",
+              "Count 3": "Failure",
+              "Endpoint 1": "Endpoint",
+              "Endpoint 2": "",
+              "Endpoint 3": ""
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Percent Failure",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Failure"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Total"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "include": [
+                "Failure",
+                "Total"
+              ],
+              "reducer": "diffperc"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "greater",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "Failure"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Failure"
+              }
+            ]
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "Endpoint",
+                "Percent Failure"
+              ]
+            }
+          }
+        },
+        {
+          "id": "limit",
+          "options": {
+            "limitField": "25"
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": ""
+                  }
+                },
+                "fieldName": "Endpoint"
+              }
+            ],
+            "match": "any",
+            "type": "exclude"
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "displayName": "Percent failure",
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 17,
+        "y": 18
+      },
+      "id": 7,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Percent failure"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.0-257000",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "Endpoint",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\"",
+          "refId": "All",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "Endpoint",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:true AND TransferSuccess:true)  ",
+          "refId": "Success",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "Endpoint",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:false OR (FinalAttempt:true AND TransferSuccess:false))",
+          "refId": "Failure",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "Percent failed attempts per OSDF endpoint (cache/origin)",
+      "transformations": [
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Endpoint"
+              }
+            ]
+          }
+        },
+        {
+          "id": "concatenate",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Count 1": false,
+              "Endpoint 1": false,
+              "Endpoint 2": true,
+              "Endpoint 3": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Count 1": 1,
+              "Count 2": 2,
+              "Count 3": 3,
+              "Endpoint 1": 0,
+              "Endpoint 2": 4,
+              "Endpoint 3": 5
+            },
+            "renameByName": {
+              "Count 1": "Total",
+              "Count 2": "Success",
+              "Count 3": "Failure",
+              "Endpoint 1": "Endpoint",
+              "Endpoint 2": "",
+              "Endpoint 3": ""
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Percent Failure",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Failure"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Total"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "include": [
+                "Failure",
+                "Total"
+              ],
+              "reducer": "diffperc"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "greater",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "Failure"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Failure"
+              }
+            ]
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "Endpoint",
+                "Percent Failure"
+              ]
+            }
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": ""
+                  }
+                },
+                "fieldName": "Endpoint"
+              }
+            ],
+            "match": "any",
+            "type": "exclude"
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 8,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelMaxLength": 20,
+        "xTickLabelRotation": 30,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "11.6.0-228187",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "machineattrglidein_site0.indexed",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:false OR (FinalAttempt:true AND TransferSuccess:false)) AND _exists_:machineattrglidein_site0.indexed",
+          "refId": "A",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "Transfer attempt failures per OSPool Site (where available)",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Percent failure",
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 17,
+        "x": 0,
+        "y": 37
+      },
+      "id": 9,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "vertical",
+        "showValue": "auto",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        },
+        "xField": "Endpoint",
+        "xTickLabelMaxLength": 40,
+        "xTickLabelRotation": 33,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "11.6.0-228187",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "machineattrglidein_site0.indexed",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND _exists_:machineattrglidein_site0.indexed",
+          "refId": "All",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "machineattrglidein_site0.indexed",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:true AND TransferSuccess:true) AND _exists_:machineattrglidein_site0.indexed",
+          "refId": "Success",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "machineattrglidein_site0.indexed",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:false OR (FinalAttempt:true AND TransferSuccess:false)) AND _exists_:machineattrglidein_site0.indexed",
+          "refId": "Failure",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "Percent failed attempts per OSPool Site",
+      "transformations": [
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "machineattrglidein_site0.indexed"
+              }
+            ]
+          }
+        },
+        {
+          "id": "concatenate",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Count 1": false,
+              "Endpoint 1": false,
+              "Endpoint 2": true,
+              "Endpoint 3": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Count 1": 1,
+              "Count 2": 2,
+              "Count 3": 3,
+              "Endpoint 1": 0,
+              "Endpoint 2": 4,
+              "Endpoint 3": 5
+            },
+            "renameByName": {
+              "Count 1": "Total",
+              "Count 2": "Success",
+              "Count 3": "Failure",
+              "Endpoint 1": "Endpoint",
+              "Endpoint 2": "",
+              "Endpoint 3": "",
+              "machineattrglidein_site0.indexed 1": "Site",
+              "machineattrglidein_site0.indexed 2": ""
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Percent Failure",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Failure"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Total"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "include": [
+                "Failure",
+                "Total"
+              ],
+              "reducer": "diffperc"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "greater",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "Failure"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Failure"
+              }
+            ]
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "Percent Failure",
+                "Site"
+              ]
+            }
+          }
+        },
+        {
+          "id": "limit",
+          "options": {
+            "limitField": "25"
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "fdp5vlu8k17gge"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "displayName": "Percent failure",
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 17,
+        "y": 37
+      },
+      "id": 10,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Percent failure"
+          }
+        ]
+      },
+      "pluginVersion": "11.6.0-228187",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "machineattrglidein_site0.indexed",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND _exists_:machineattrglidein_site0.indexed",
+          "refId": "All",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "machineattrglidein_site0.indexed",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:true AND TransferSuccess:true) AND _exists_:machineattrglidein_site0.indexed",
+          "refId": "Success",
+          "timeField": "RecordTime"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "machineattrglidein_site0.indexed",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "500"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "fdp5vlu8k17gge"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "Endpoint:$Endpoint AND ScheddName:$ScheddName AND TransferType:$TransferType AND TransferProtocol:\"osdf\" AND (FinalAttempt:false OR (FinalAttempt:true AND TransferSuccess:false)) AND _exists_:machineattrglidein_site0.indexed",
+          "refId": "Failure",
+          "timeField": "RecordTime"
+        }
+      ],
+      "title": "Percent failed attempts per OSPool Site",
+      "transformations": [
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "machineattrglidein_site0.indexed"
+              }
+            ]
+          }
+        },
+        {
+          "id": "concatenate",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Count 1": false,
+              "Endpoint 1": false,
+              "Endpoint 2": true,
+              "Endpoint 3": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Count 1": 1,
+              "Count 2": 2,
+              "Count 3": 3,
+              "Endpoint 1": 0,
+              "Endpoint 2": 4,
+              "Endpoint 3": 5
+            },
+            "renameByName": {
+              "Count 1": "Total",
+              "Count 2": "Success",
+              "Count 3": "Failure",
+              "Endpoint 1": "Endpoint",
+              "Endpoint 2": "",
+              "Endpoint 3": "",
+              "machineattrglidein_site0.indexed 1": "Site",
+              "machineattrglidein_site0.indexed 2": ""
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Percent Failure",
+            "binary": {
+              "left": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Failure"
+                }
+              },
+              "operator": "/",
+              "right": {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Total"
+                }
+              }
+            },
+            "mode": "binary",
+            "reduce": {
+              "include": [
+                "Failure",
+                "Total"
+              ],
+              "reducer": "diffperc"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "greater",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "Failure"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Failure"
+              }
+            ]
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "byVariable": false,
+            "include": {
+              "names": [
+                "Percent Failure",
+                "Site"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "fdp5vlu8k17gge"
+        },
+        "definition": "{\"find\":\"terms\",\"field\":\"Endpoint\"}",
+        "description": "",
+        "includeAll": true,
+        "multi": true,
+        "name": "Endpoint",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"Endpoint\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "fdp5vlu8k17gge"
+        },
+        "definition": "{\"find\":\"terms\",\"field\":\"ScheddName\"}",
+        "includeAll": true,
+        "label": "AP",
+        "multi": true,
+        "name": "ScheddName",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"ScheddName\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": [
+            "upload",
+            "download"
+          ],
+          "value": [
+            "upload",
+            "download"
+          ]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "fdp5vlu8k17gge"
+        },
+        "definition": "{\"find\":\"terms\",\"field\":\"TransferType\"}",
+        "description": "",
+        "includeAll": false,
+        "multi": true,
+        "name": "TransferType",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"TransferType\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "OSDF",
+  "uid": "fdp5y9shenv9ce",
+  "version": 42
+}
