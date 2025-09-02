@@ -5,5 +5,5 @@ providers:
     type: file
     options:
       path:
-        /var/lib/grafana/dashboards/Overview.json
+        /var/lib/grafana/dashboards/OSDF.json
 
