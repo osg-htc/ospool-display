@@ -1,0 +1,9 @@
+apiVersion: 1
+
+providers:
+  - name: GPUs
+    type: file
+    options:
+      path:
+        /var/lib/grafana/dashboards/GPUs.json
+
